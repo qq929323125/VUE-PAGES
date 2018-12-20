@@ -1,10 +1,11 @@
 const path = require('path')
-const proName=require('./config/proName')
-const name=proName.name
+const name=require('./config/proName').name
 
 module.exports = {
+    //指定打包后的文件夹
     outputDir:`dist/${name}`,
 
+    //配置模板和入口
     pages:{
         index:{
             entry:`./src/${name}/main.js`,
@@ -13,6 +14,7 @@ module.exports = {
         }
     },
 
+    //public文件的copy
     chainWebpack: config => {
         config
             .plugin('copy')
@@ -22,10 +24,23 @@ module.exports = {
                         from:`./public/${name}`,
                         to:'./'
                     },
+                    {
+                        from:'./public/js',
+                        to:'./js'
+                    },
+                    {
+                        from:'./public/css',
+                        to:'./css'
+                    },
+                    {
+                        from:'./public/img',
+                        to:'./img'
+                    }
                 ],
             ])
     },
 
+    //cdn加速 打包时忽略的依赖
     configureWebpack:{
         externals: {
             'vue': 'Vue',
@@ -34,6 +49,7 @@ module.exports = {
         }
     },
 
+    //公共的less文件配置
     pluginOptions: {
       'style-resources-loader': {
         preProcessor: 'less',
@@ -43,5 +59,6 @@ module.exports = {
       }
     },
 
+    //不生成.map文件
     productionSourceMap:false,
 }
