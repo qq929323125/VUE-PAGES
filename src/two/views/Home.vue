@@ -13,12 +13,6 @@ export default {
   name: 'home',
   components: {
     HelloWorld
-  },
-  mounted(){
-    this.$Notice.info({
-      desc:'1233'
-    })
   }
-  
 }
 </script>

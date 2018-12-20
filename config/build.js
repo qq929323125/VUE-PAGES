@@ -1,5 +1,5 @@
 let proName=process.argv[2]
-let pro=['one'];
+let pro=['one','two'];
 
 let fs=require('fs');
 

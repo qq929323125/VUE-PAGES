@@ -46,10 +46,11 @@ module.exports = {
             'vue': 'Vue',
             'vue-router': 'VueRouter',
             'vuex': 'Vuex',
+            'iview': 'iview',
         }
     },
 
-    //公共的less文件配置
+    //公共的less变量
     pluginOptions: {
       'style-resources-loader': {
         preProcessor: 'less',
@@ -58,6 +59,15 @@ module.exports = {
         ]
       }
     },
+
+    css: {
+        loaderOptions: { // 向 CSS 相关的 loader 传递选项
+            less: {
+                javascriptEnabled: true
+            }
+        }
+    },
+    
 
     //不生成.map文件
     productionSourceMap:false,
